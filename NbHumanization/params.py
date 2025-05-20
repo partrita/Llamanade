@@ -1,4 +1,4 @@
-LLAMANADE="/home/zhesang/Llamanade"
+LLAMANADE="Llamanade"
 ANNOTATION_SCHEME="martin"
 ANNOTATION_DEFINITION="AbM"
 BLAST_EXEC = "blastp"

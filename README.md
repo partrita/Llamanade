@@ -1,14 +1,11 @@
 Server is now avaialble at http://www.llamanade.app or http://35.208.211.136 if domain cannot be resolved
 
-Send a request to zhe[dot]sang[at]icahn[dot]mssm[dot]edu if you encounter any difficulty.
-
-
+Send a request to zhe.sang@icahn.mssm.edu if you encounter any difficulty.
 
 # Llamanade: an open-source computational pipeline for robust nanobody humanization 
 
-Zhe Sang,Yufei Xiang, Ivet Bahar and Yi Shi
+Zhe Sang,Yufei Xiang, Ivet Bahar and Yi Shi @ University of Pittsburgh
 
-University of Pittsburgh
 ## Abstract 
 
 Nanobodies (Nbs) have recently emerged as a promising class of antibody fragments for biomedical and therapeutic applications. Despite having marked physicochemical properties, Nbs are derived from camelids and may require “humanization” to improve translational potentials for clinical trials. Here we have systematically analyzed the sequence and structural properties of Nbs based on NGS (next-generation sequencing) databases and high-resolution structures. Our analysis reveals substantial framework diversities and underscores the key differences between Nbs and human Immunoglobulin G (IgG) antibodies. We identified conserved residues that may contribute to enhanced solubility, structural stability, and antigen-binding, providing insights into Nb humanization. Based on big data analysis, we developed “Llamanade'', a user-friendly, open-source to facilitate rational humanization of Nbs. Using Nb sequence as input, Llamanade provides information on the sequence features, model structures, and optimizes solutions to humanize Nbs. The full analysis for a given Nb takes less than a minute on a local computer. To demonstrate the robustness of this tool, we applied it to successfully humanize a cohort of structurally diverse and highly potent SARS-CoV-2 neutralizing Nbs. Llamanade is freely available and will be easily accessible on a web server to support the development of a rapidly expanding repertoire of therapeutic Nbs into safe and effective trials.
@@ -16,27 +13,33 @@ Nanobodies (Nbs) have recently emerged as a promising class of antibody fragment
 for citation, please cite our paper: https://doi.org/10.1016/j.str.2021.11.006
 <p align="left"><img src="https://ars.els-cdn.com/content/image/1-s2.0-S0969212621004184-fx1.jpg" height="500"/></p>
 
-How to run Llamanade locally:
+### How to run Llamanade locally:
 
-    1. Clone the git repository : git clone "https://github.com/sangzhe/Llamanade.git"
-    2. Make sure you have the following libraries installed in your environment:
-            - HMMER(http://hmmer.org)(required by ANARCI)
-            - ANARCI(https://github.com/oxpig/ANARCI)
-            - NCBI Blastp(https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST) or (sudo apt-get install ncbi-blast+)
-            - Bio (pip install Bio)
-            - ProDy(http://prody.csb.pitt.edu/)(pip install prody)
-            - Protinter(https://github.com/maxibor/protinter)
-            - Modeller (requires license - https://salilab.org/modeller/)
-    3. Configure NanoNet
-            - NanoNet is included here, please install required library accordingly.
-            - NanoNet only predict CA atoms, sidechains will be constructed using pulchr. The source code is also included under NanoNet folder, please compile first and move the executable under the NanoNet folder
-            - Test if NanoNet works
-    4. Unzip recourses.zip
-    5. Edit params.py
-            - Varaibles in this file refer to the executables or resources, please edit accordingly especially the path for LLAMANADE. 
+> Use `pixi` to management of dependency.
 
+1. Clone the git repository : `gh repo clone partrita/Llamanade`
+2. Make sure you have the following libraries installed in your environment: `pixi install`
+        - [HMMER](http://hmmer.org)
+        - [ANARCI](https://github.com/oxpig/ANARCI)
+        - [NCBI Blastp](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST)
+        - Biopython
+        - [ProDy](http://prody.csb.pitt.edu/)
+        - [Protinter](https://github.com/maxibor/protinter)
+        - [Modeller](https://salilab.org/modeller/)
+3. Configure NanoNet
+        - NanoNet is included here, please install required library accordingly.
+        - NanoNet only predict CA atoms, sidechains will be constructed using pulchr. The source code is also included under NanoNet folder, please compile first and move the executable under the NanoNet folder
+        - Test if NanoNet works
+4. Unzip recourses.zip
+5. Edit params.py
+        - Varaibles in this file refer to the executables or resources, please edit accordingly especially the path for LLAMANADE. 
 
-Run Llamanade
+### Run Llamanade
+
+```
+pixi run python NbHumanization_main.py
+```
+
 ```bash
 usage: Nb Humanization [-h] [--fa FA] [--pdb PDB] [--chain CHAIN] [--modeling {NanoNet,Modeller}]
 
@@ -53,7 +56,8 @@ optional arguments:
 
 ```
 
-Run with a sequence in FASTA
+#### Run with a sequence in FASTA
+
 ```bash
 (base) zhesang@zhe-Alienware:~/Llamanade$ python NbHumanization_main.py --fa test/Nb21.fa
 Initial coordinates will be preserved.

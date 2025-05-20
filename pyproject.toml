@@ -1,0 +1,23 @@
+[project]
+authors = [{name = "deepthought", email = "deepthough@postech.ac.kr"}]
+name = "Llamanade"
+requires-python = ">= 3.11"
+version = "0.1.0"
+dependencies = ["protinter @ git+https://git@github.com/partrita/protinter.git@master"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge", "bioconda", "salilab"]
+platforms = ["linux-64"]
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+biopython = ">=1.85,<2"
+prody = ">=2.5.0,<3"
+hmmer = ">=3.4,<4"
+anarci = ">=2024.5.21,<2025"
+blast = ">=2.16.0,<3"
+modeller = ">=10.6,<11"
+numpy = ">=1.24.4,<2"
+tensorflow = ">=2.18.0,<3"
+pulchra = ">=3.6,<4"
